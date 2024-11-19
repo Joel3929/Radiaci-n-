@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radiación de los Elementos Químicos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: #2196F3;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .content h2 {
+            color: #2196F3;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .content p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .calculator {
+            padding: 20px;
+            background-color: #f0f8ff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .calculator label {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .calculator input {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .calculator button {
+            padding: 10px 20px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .calculator button:hover {
+            background-color: #1976d2;
+        }
+
+        .result {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2196F3;
+            color: white;
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Radiación de los Elementos Químicos</h1>
+        <p>Entiende cómo la radiación de los elementos químicos puede afectar nuestra vida diaria</p>
+    </header>
+
+    <div class="content">
+        <section>
+            <h2>¿Qué es la Radiación de los Elementos Químicos?</h2>
+            <p>La radiación de los elementos químicos es un fenómeno natural o inducido por el ser humano, en el que los átomos de ciertos elementos inestables emiten energía en forma de partículas o radiación electromagnética. Los elementos como el uranio, el radón, y el torio son conocidos por emitir radiación debido a su inestabilidad atómica.</p>
+            <p>Existen varios tipos de radiación, entre ellos:</p>
+            <ul>
+                <li><strong>Radiación alfa (α):</strong> Emisión de partículas alfa, compuestas por dos protones y dos neutrones. Es fácilmente bloqueada por materiales como papel.</li>
+                <li><strong>Radiación beta (β):</strong> Emisión de electrones de alta energía. Puede atravesar materiales como el papel, pero es detenida por metales ligeros como el aluminio.</li>
+                <li><strong>Radiación gamma (γ):</strong> Radiación electromagnética de alta energía. Es muy penetrante y requiere materiales densos como plomo o concreto para bloquearla.</li>
+            </ul>
+            <p>La exposición prolongada a la radiación de ciertos elementos puede tener efectos perjudiciales en la salud humana, causando daños a las células y aumentando el riesgo de cáncer.</p>
+        </section>
+
+        <section class="calculator">
+            <h2>Calculadora de Radiación</h2>
+            <p>Esta calculadora te permitirá estimar la radiación de un material basado en la fórmula:</p>
+            <p><strong>Radiación = Actividad (Bq) / Tiempo (s)</strong></p>
+            <label for="activity">Actividad (Becquerelios, Bq):</label>
+            <input type="number" id="activity" placeholder="Introduce la actividad en Bq">
+
+            <label for="time">Tiempo (en segundos):</label>
+            <input type="number" id="time" placeholder="Introduce el tiempo en segundos">
+
+            <button onclick="calculateRadiation()">Calcular Radiación</button>
+
+            <div class="result" id="result"></div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2024 - Radiación de Elementos Químicos</p>
+    </footer>
+
+    <script>
+        function calculateRadiation() {
+            // Obtener los valores introducidos por el usuario
+            var activity = parseFloat(document.getElementById('activity').value);
+            var time = parseFloat(document.getElementById('time').value);
+            
+            // Verificar si los valores son válidos
+            if (isNaN(activity) || isNaN(time) || activity <= 0 || time <= 0) {
+                document.getElementById('result').textContent = "Por favor, introduce valores válidos para actividad y tiempo.";
+                document.getElementById('result').style.color = "red";
+                return;
+            }
+
+            // Calcular la radiación
+            var radiation = activity / time;
+
+            // Mostrar el resultado
+            document.getElementById('result').textContent = "La radiación estimada es " + radiation.toFixed(2) + " Bq/s.";
+            document.getElementById('result').style.color = "green";
+        }
+    </script>
+
+</body>
+</html>
